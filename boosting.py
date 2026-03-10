@@ -188,3 +188,41 @@ def run(Xtrain_file: str, Ytrain_file: str, test_data_file: str, pred_file: str)
 
     # Save one integer per line, no header according to assignment instructions
     np.savetxt(pred_file, y_pred, fmt="%d")
+
+# This is a block of code for my testing and for generating my grpahs for the report
+# if __name__ == "__main__":
+#     X, y = load_data("wine_X.csv", "wine_y.csv")
+
+#     n = len(X)
+#     split_90 = int(0.9 * n)
+
+#     X_train_full = X[:split_90]
+#     y_train_full = y[:split_90]
+
+#     X_test = X[split_90:]
+#     y_test = y[split_90:]
+
+#     # Preprocess AFTER split
+#     X_train_p, X_test_p = preprocess_data(X_train_full, X_test)
+
+#     # run experiment on different T's
+#     T = {1, 3, 5, 10, 20, 50}
+#     results = []
+
+#     for t_val in T:
+#         model = BoostingClassifier(T=t_val)
+#         model.train(X_train_p, y_train_full)
+
+#         preds = model.predict(X_test_p)
+#         acc = evaluate(y_test, preds)
+
+#         results.append(acc)
+#         print(t_val, acc)
+
+#     # plt.plot(T, results, marker='o')
+
+#     # plt.xlabel("Value of T Used")
+#     # plt.ylabel("Accuracy")
+#     # plt.title("AdaBoost Accuracy vs T")
+#     # plt.grid(True)
+#     # plt.savefig("adaboost_plot.png")
