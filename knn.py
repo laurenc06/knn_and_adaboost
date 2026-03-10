@@ -54,7 +54,7 @@ def preprocess_data(X_train, X_test):
 class KNNClassifier:
     """K-Nearest Neighbors Classifier."""
     # initialize our stuff
-    def __init__(self, k=3):
+    def __init__(self, k=1):
         self.k = k
         self.X_train = None
         self.y_train = None
@@ -130,7 +130,7 @@ def run(Xtrain_file: str, Ytrain_file: str, test_data_file: str, pred_file: str)
     # print("X_test", X_test.shape)
 
     # Train
-    model = KNNClassifier(k=1)  # tune k
+    model = KNNClassifier(k=2)  # tune k
     model.train(X_train_p, y_train)
 
     # Predict
