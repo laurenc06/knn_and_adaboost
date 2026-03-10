@@ -1,4 +1,7 @@
 #!/usr/bin/env python3
+# Lauren Cho
+# A2N1T01 
+
 """
 CMPSC 165B - Machine Learning
 Homework 3, Problem 2: Boosting Classifier
