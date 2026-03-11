@@ -9,6 +9,7 @@ Homework 3, Problem 1: K-Nearest Neighbors
 
 import numpy as np
 import pandas as pd
+import matplotlib.pyplot as plt
 
 
 def load_data(X_path: str, y_path: str = None):
@@ -140,39 +141,39 @@ def run(Xtrain_file: str, Ytrain_file: str, test_data_file: str, pred_file: str)
     np.savetxt(pred_file, y_pred, fmt="%d")
 
 # This is a block of code for my testing and for generating my grpahs for the report
-# if __name__ == "__main__":
-#     X, y = load_data("wine_X.csv", "wine_y.csv")
+if __name__ == "__main__":
+    X, y = load_data("wine_X.csv", "wine_y.csv")
 
-#     n = len(X)
-#     split_90 = int(0.9 * n)
+    n = len(X)
+    split_90 = int(0.9 * n)
 
-#     X_train_full = X[:split_90]
-#     y_train_full = y[:split_90]
+    X_train_full = X[:split_90]
+    y_train_full = y[:split_90]
 
-#     X_test = X[split_90:]
-#     y_test = y[split_90:]
+    X_test = X[split_90:]
+    y_test = y[split_90:]
 
-#     # Preprocess AFTER split
-#     X_train_p, X_test_p = preprocess_data(X_train_full, X_test)
+    # Preprocess AFTER split
+    X_train_p, X_test_p = preprocess_data(X_train_full, X_test)
 
-#     # run experiment on different k's
-#     ks = {1, 3, 5, 7, 9, 11, 15, 21} 
-#     results = []
+    # run experiment on different k's
+    ks = [1, 3, 5, 7, 9, 11, 15, 21]
+    results = []
 
-#     for k_val in ks:
-#         model = KNNClassifier(k=k_val)
-#         model.train(X_train_p, y_train_full)
+    for k_val in ks:
+        model = KNNClassifier(k=k_val)
+        model.train(X_train_p, y_train_full)
 
-#         preds = model.predict(X_test_p)
-#         acc = evaluate(y_test, preds)
+        preds = model.predict(X_test_p)
+        acc = evaluate(y_test, preds)
 
-#         results.append(acc)
-#         print(k_val, acc)
+        results.append(acc)
+        print(k_val, acc)
+    
+    plt.plot(ks, results, marker='o')
 
-#     # plt.plot(k, results, marker='o')
-
-#     # plt.xlabel("k Used")
-#     # plt.ylabel("Accuracy")
-#     # plt.title("KNN Classifer Accuracy vs k Used")
-#     # plt.grid(True)
-#     # plt.savefig("knn_classifer_plot.png")
+    plt.xlabel("k")
+    plt.ylabel("Accuracy")
+    plt.title("KNN Classifer Accuracy vs k Used")
+    plt.grid(True)
+    plt.savefig("knn_classifer_plot.png")
